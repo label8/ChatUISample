@@ -28,6 +28,14 @@
                             <constraint firstAttribute="width" constant="30" id="iMz-HW-xnc"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s26-Eg-n8F" customClass="YourBalloonView" customModule="ChatUISample" customModuleProvider="target">
+                        <rect key="frame" x="44" y="20" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="JhS-aL-wpf"/>
+                            <constraint firstAttribute="width" constant="30" id="R2R-Wb-zEO"/>
+                        </constraints>
+                    </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="あいうえおあいうえおあいうえおあいうえおあいうえお" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DKQ-8v-kUA">
                         <rect key="frame" x="54" y="20" width="200" height="70.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,20 +51,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s26-Eg-n8F" customClass="YourBalloonView" customModule="ChatUISample" customModuleProvider="target">
-                        <rect key="frame" x="24" y="20" width="30" height="30"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="JhS-aL-wpf"/>
-                            <constraint firstAttribute="width" constant="30" id="R2R-Wb-zEO"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ghD-lJ-il0" firstAttribute="bottom" secondItem="DKQ-8v-kUA" secondAttribute="bottom" id="B4p-57-hLD"/>
                     <constraint firstItem="h9L-L8-FUR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ELx-fS-sQZ"/>
                     <constraint firstItem="s26-Eg-n8F" firstAttribute="top" secondItem="DKQ-8v-kUA" secondAttribute="top" id="F3b-Kb-2Jp"/>
-                    <constraint firstItem="DKQ-8v-kUA" firstAttribute="leading" secondItem="s26-Eg-n8F" secondAttribute="trailing" id="FAZ-8W-KYm"/>
+                    <constraint firstItem="DKQ-8v-kUA" firstAttribute="leading" secondItem="s26-Eg-n8F" secondAttribute="trailing" constant="-20" id="FAZ-8W-KYm"/>
                     <constraint firstItem="h9L-L8-FUR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="FCq-ql-del"/>
                     <constraint firstItem="DKQ-8v-kUA" firstAttribute="leading" secondItem="h9L-L8-FUR" secondAttribute="trailing" constant="16" id="T5x-MW-xQl"/>
                     <constraint firstItem="DKQ-8v-kUA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="c7f-fk-tX3"/>

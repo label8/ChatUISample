@@ -9,6 +9,7 @@
 import UIKit
 
 class MyBalloonView: UIView {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -22,9 +23,16 @@ class MyBalloonView: UIView {
         let line = UIBezierPath() // 吹き出しの口部分を描画
         UIColor(hex: "85E249").setFill()
         UIColor.clear.setStroke()
-        line.move(to: CGPoint(x: 0, y: 10))
-        line.addQuadCurve(to: CGPoint(x: 20, y: 0), controlPoint: CGPoint(x: 10, y: 20))
-        line.addQuadCurve(to: CGPoint(x: 5, y: 20), controlPoint: CGPoint(x: 12, y: 30))
+        
+//        line.move(to: CGPoint(x: 0, y: 10))
+//        line.addQuadCurve(to: CGPoint(x: 20, y: 0), controlPoint: CGPoint(x: 10, y: 20))
+//        line.addQuadCurve(to: CGPoint(x: 5, y: 20), controlPoint: CGPoint(x: 12, y: 30))
+
+        line.move(to: CGPoint(x: 0, y: 0))
+        line.addQuadCurve(to: CGPoint(x: 15, y: 15), controlPoint: CGPoint(x: 5, y: 15))
+        line.addQuadCurve(to: CGPoint(x: 20, y: 5), controlPoint: CGPoint(x: 25, y: 10))
+        line.addQuadCurve(to: CGPoint(x: 0, y: 0), controlPoint: CGPoint(x: 5, y: 10))
+        
         line.close()
         line.fill()
         line.stroke()

@@ -19,6 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="411" height="108.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-tU-NIB" customClass="MyBalloonView" customModule="ChatUISample" customModuleProvider="target">
+                        <rect key="frame" x="361" y="20" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="78q-XI-bCK"/>
+                            <constraint firstAttribute="height" constant="30" id="7nu-TX-fDe"/>
+                        </constraints>
+                    </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" translatesAutoresizingMaskIntoConstraints="NO" id="Lqe-G9-LZY">
                         <rect key="frame" x="181" y="20" width="200" height="78.5"/>
                         <color key="backgroundColor" red="0.52156862745098043" green="0.88627450980392153" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,14 +48,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDN-tU-NIB" customClass="MyBalloonView" customModule="ChatUISample" customModuleProvider="target">
-                        <rect key="frame" x="381" y="20" width="30" height="30"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="78q-XI-bCK"/>
-                            <constraint firstAttribute="height" constant="30" id="7nu-TX-fDe"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gDN-tU-NIB" firstAttribute="top" secondItem="Lqe-G9-LZY" secondAttribute="top" id="IGf-Tt-LEV"/>
@@ -58,11 +58,12 @@
                     <constraint firstItem="FtZ-1B-IMN" firstAttribute="bottom" secondItem="Lqe-G9-LZY" secondAttribute="bottom" id="m6y-a3-W2z"/>
                     <constraint firstAttribute="bottom" secondItem="Lqe-G9-LZY" secondAttribute="bottom" constant="10" id="qVq-wL-Ixb"/>
                     <constraint firstItem="FtZ-1B-IMN" firstAttribute="top" secondItem="Hh2-07-WfG" secondAttribute="bottom" constant="8" id="ueG-Qx-EGN"/>
-                    <constraint firstItem="gDN-tU-NIB" firstAttribute="leading" secondItem="Lqe-G9-LZY" secondAttribute="trailing" id="zBN-wE-v29"/>
+                    <constraint firstItem="gDN-tU-NIB" firstAttribute="leading" secondItem="Lqe-G9-LZY" secondAttribute="trailing" constant="-20" id="zBN-wE-v29"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="myBalloonView" destination="gDN-tU-NIB" id="3IR-4B-YFj"/>
                 <outlet property="readLabel" destination="Hh2-07-WfG" id="Asc-8W-apC"/>
                 <outlet property="textView" destination="Lqe-G9-LZY" id="08p-As-bmh"/>
                 <outlet property="textViewWidthConstraint" destination="Vme-kg-jfs" id="91y-VH-g2f"/>

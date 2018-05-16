@@ -15,6 +15,7 @@ class MyChatViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var textViewWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var myBalloonView: MyBalloonView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,7 @@ class MyChatViewCell: UITableViewCell {
         self.textView.layer.cornerRadius = 15 // 角を丸める
 //        let myBalloonView = MyBalloonView(frame: CGRect(x: textView.frame.maxX - 7, y: textView.frame.minY - 10, width: 30, height: 30))
 //        addSubview(myBalloonView) // 吹き出しのようにするためにビューを重ねる
+        myBalloonView.transform = CGAffineTransform(scaleX: -1, y: 1);
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
