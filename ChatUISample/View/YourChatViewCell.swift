@@ -20,6 +20,8 @@ class YourChatViewCell: UITableViewCell {
         self.textView.layer.cornerRadius = 15 // 角を丸める
 //        let yourBalloonView = YourBalloonView(frame: CGRect(x: textView.frame.minX - 10, y: textView.frame.minY - 10, width: 50, height: 50))
 //        self.addSubview(yourBalloonView) // 吹き出しのようにするためにビューを重ねる
+        
+        textView.textContainerInset = UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

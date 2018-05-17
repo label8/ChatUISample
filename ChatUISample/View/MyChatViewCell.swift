@@ -19,11 +19,14 @@ class MyChatViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.backgroundColor = UIColor.clear
         self.textView.layer.cornerRadius = 15 // 角を丸める
 //        let myBalloonView = MyBalloonView(frame: CGRect(x: textView.frame.maxX - 7, y: textView.frame.minY - 10, width: 30, height: 30))
 //        addSubview(myBalloonView) // 吹き出しのようにするためにビューを重ねる
         myBalloonView.transform = CGAffineTransform(scaleX: -1, y: 1);
+        
+        textView.textContainerInset = UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
