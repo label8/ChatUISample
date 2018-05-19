@@ -94,13 +94,9 @@ extension ChatViewController {
         chatTableView.estimatedRowHeight = 10000 // セルが高さ以上になった場合バインバインという動きをするが、それを防ぐために大きな値を設定
         chatTableView.rowHeight = UITableViewAutomaticDimension // Contentに合わせたセルの高さに設定
         chatTableView.allowsSelection = false // 選択を不可にする
-        chatTableView.keyboardDismissMode = .interactive // テーブルビューをキーボードをまたぐように下にスワイプした時にキーボードを閉じる
         
         chatTableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
         chatTableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
-        
-//        self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56.0)) // 下部に表示するテキストフィールドを設定
-//        self.bottomView.inputTextView.apply(cornerRadius: 5.0, borderWidth: 1, borderColor: UIColor.lightGray)
         
         let chat1 = ChatEntity(text: "text1", time: "10.01", userType: .I)
         let chat2 = ChatEntity(text: "text2", time: "10.02", userType: .You)
