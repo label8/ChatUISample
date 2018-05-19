@@ -11,14 +11,20 @@ import UIKit
 class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var inputTextView: UITextView!
+    @IBOutlet weak var inputTextViewHeightConstraint: NSLayoutConstraint!
     
-    var bottomView: ChatRoomInputView! // 画面下部に表示するテキストフィールドと送信ボタン
+    var isObserving = false
     
     var chats: [ChatEntity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 画面タップを取得
+        let screenTap = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.tapGesture(sender:)))
+        self.view.addGestureRecognizer(screenTap)
+        
         setupUI()
     }
     
@@ -28,18 +34,51 @@ class ChatViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Viewの表示時にキーボード表示・非表示時を監視していたObserverを解放する
+        if(isObserving) {
+            let notification = NotificationCenter.default
+            notification.removeObserver(self)
+            notification.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            notification.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            isObserving = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Viewの表示時にキーボード表示・非表示を監視するObserverを登録する
+        if(!isObserving) {
+            let notification = NotificationCenter.default
+            notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            isObserving = true
+        }
     }
     
-    override var canBecomeFirstResponder: Bool {
-        return true
+    @objc func keyboardWillShow(notification: NSNotification?) {
+        // キーボード表示時の動作をここに記述する
+        let rect = (notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let duration:TimeInterval = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        UIView.animate(withDuration: duration, animations: {
+            //let transform = CGAffineTransform(translationX: 0, -rect.size.height + 49)
+            let transform = CGAffineTransform(translationX: 0, y: -rect.size.height)
+            self.view.transform = transform
+        }, completion:nil)
     }
     
-    override var inputAccessoryView: UIView? {
-        return bottomView // 通常はテキストフィールドのプロパティに設定しますが、画面を表示している間は常に表示したいため、ViewControllerのプロパティに設定します
+    @objc func keyboardWillHide(notification: NSNotification?) {
+        // キーボード消滅時の動作をここに記述する
+        let duration = (notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double)
+        UIView.animate(withDuration: duration, animations:{
+            self.view.transform = CGAffineTransform.identity
+        }, completion:nil)
+    }
+    
+    // 画面がタップされた際にキーボードを閉じる処理
+    @objc func tapGesture(sender: UITapGestureRecognizer) {
+        self.inputTextView.resignFirstResponder()
     }
 }
 
@@ -60,8 +99,8 @@ extension ChatViewController {
         chatTableView.register(UINib(nibName: "YourChatViewCell", bundle: nil), forCellReuseIdentifier: "YourChat")
         chatTableView.register(UINib(nibName: "MyChatViewCell", bundle: nil), forCellReuseIdentifier: "MyChat")
         
-        self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56.0)) // 下部に表示するテキストフィールドを設定
-        self.bottomView.inputTextView.apply(cornerRadius: 5.0, borderWidth: 1, borderColor: UIColor.lightGray)
+//        self.bottomView = ChatRoomInputView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 56.0)) // 下部に表示するテキストフィールドを設定
+//        self.bottomView.inputTextView.apply(cornerRadius: 5.0, borderWidth: 1, borderColor: UIColor.lightGray)
         
         let chat1 = ChatEntity(text: "text1", time: "10.01", userType: .I)
         let chat2 = ChatEntity(text: "text2", time: "10.02", userType: .You)

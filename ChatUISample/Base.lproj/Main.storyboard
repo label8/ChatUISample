@@ -19,21 +19,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-B9-vgp" customClass="TouchableTableView" customModule="ChatUISample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-uU-1d9">
+                                <rect key="frame" x="0.0" y="609" width="375" height="58"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-zu-8Jq">
+                                        <rect key="frame" x="10" y="8" width="314" height="42"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="5p6-v2-WWb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQF-ZD-QKs">
+                                        <rect key="frame" x="334" y="14" width="31" height="30"/>
+                                        <state key="normal" title="送信"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85987071700507611" green="0.85987071700507611" blue="0.85987071700507611" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="J0f-zu-8Jq" secondAttribute="bottom" constant="8" id="3CS-Ll-1Es"/>
+                                    <constraint firstItem="J0f-zu-8Jq" firstAttribute="top" secondItem="i2a-uU-1d9" secondAttribute="top" constant="8" id="Qdq-53-TYE"/>
+                                    <constraint firstItem="AQF-ZD-QKs" firstAttribute="centerY" secondItem="J0f-zu-8Jq" secondAttribute="centerY" id="W5O-Z6-Nu8"/>
+                                    <constraint firstItem="AQF-ZD-QKs" firstAttribute="leading" secondItem="J0f-zu-8Jq" secondAttribute="trailing" constant="10" id="Xfh-TZ-sjY"/>
+                                    <constraint firstItem="J0f-zu-8Jq" firstAttribute="leading" secondItem="i2a-uU-1d9" secondAttribute="leading" constant="10" id="hVC-pA-b4g"/>
+                                    <constraint firstAttribute="trailing" secondItem="AQF-ZD-QKs" secondAttribute="trailing" constant="10" id="t3R-8l-7YR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VQX-B9-vgp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="A8a-Pi-VpH"/>
-                            <constraint firstItem="VQX-B9-vgp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KVD-Y8-MCg"/>
+                            <constraint firstItem="i2a-uU-1d9" firstAttribute="top" secondItem="VQX-B9-vgp" secondAttribute="bottom" id="Wx9-cU-U1x"/>
+                            <constraint firstItem="i2a-uU-1d9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="faf-Qd-KPt"/>
+                            <constraint firstItem="i2a-uU-1d9" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="oA8-Yi-gbn"/>
                             <constraint firstItem="VQX-B9-vgp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ppA-vk-zfv"/>
                             <constraint firstItem="VQX-B9-vgp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yua-dM-2qI"/>
+                            <constraint firstItem="i2a-uU-1d9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zby-EC-hGQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="chatTableView" destination="VQX-B9-vgp" id="3xh-v6-BHe"/>
+                        <outlet property="inputTextView" destination="J0f-zu-8Jq" id="JhL-80-oHh"/>
+                        <outlet property="inputTextViewHeightConstraint" destination="5p6-v2-WWb" id="v67-NP-BuH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
